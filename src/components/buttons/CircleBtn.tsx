@@ -4,8 +4,8 @@ import {
   StyleProp,
   ViewStyle,
   StyleSheet,
-  TouchableHighlight,
 } from 'react-native';
+import { TouchableHighlight } from 'react-native-gesture-handler';
 import {COLORS} from '@src/colors';
 
 export type CircleBtnProps = {
