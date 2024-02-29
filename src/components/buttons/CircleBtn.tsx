@@ -6,6 +6,7 @@ import {
   StyleSheet,
   TouchableHighlight,
 } from 'react-native';
+import {COLORS} from '@src/colors';
 
 export type CircleBtnProps = {
   onPress: () => void;
@@ -31,7 +32,7 @@ const styles = StyleSheet.create({
     width: 60,
     height: 60,
     position: 'absolute',
-    backgroundColor: '#F7A6D8',
+    backgroundColor: COLORS.defaultBtn,
     borderRadius: 50,
     elevation: 5,
     alignItems: 'center',

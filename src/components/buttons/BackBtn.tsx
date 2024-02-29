@@ -7,6 +7,8 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
+import {COLORS} from '@src/colors';
+
 export type BackBtnProps = {
   onPress: () => void;
   style?: StyleProp<ViewStyle>;
@@ -23,7 +25,7 @@ const BackBtn: React.FC<BackBtnProps> = ({onPress, style}) => {
 const styles = StyleSheet.create({
   text: {
     fontSize: 30,
-    color: '#F7A6D8',
+    color: COLORS.defaultText,
   },
 });
 

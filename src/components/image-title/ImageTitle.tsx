@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet, StyleProp, ViewStyle} from 'react-native';
+import { COLORS } from '@src/colors';
 
 type ImageTitleProps = {
   title: string;
@@ -25,9 +26,11 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 16,
     fontWeight: 'bold',
+    color: COLORS.defaultText,
   },
   subTitle: {
     fontSize: 16,
+    color: COLORS.defaultBtn,
   },
 });
 

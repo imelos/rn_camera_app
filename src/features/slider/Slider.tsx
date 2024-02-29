@@ -7,6 +7,8 @@ import ImageTitle from '@src/components/image-title/ImageTitle';
 
 import {formatDate} from '@src/utils/format-date';
 
+import {COLORS} from '@src/colors';
+
 const windowWidth = Dimensions.get('window').width;
 const imageWidth = windowWidth * 0.8;
 
@@ -73,9 +75,9 @@ const SliderComponent: React.FC<SliderParams> = ({photos}) => {
         style={{width: '87%', height: 40}}
         minimumValue={0}
         maximumValue={imageWidth}
-        minimumTrackTintColor="#F7A6D8"
+        minimumTrackTintColor={COLORS.defaultBtn}
         maximumTrackTintColor="#000000"
-        thumbTintColor="#F7A6D8"
+        thumbTintColor={COLORS.defaultBtn}
         onValueChange={setWidth}
         onSlidingStart={hideTitle}
         onSlidingComplete={displayTitle}
