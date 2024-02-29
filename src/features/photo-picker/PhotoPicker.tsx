@@ -54,7 +54,11 @@ const PhotoPicker = (props: AvatarProps) => {
 
   return (
     <View style={{flex: 1}}>
-      <Text>tesst</Text>
+      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        <Text style={{fontSize: 18}}>
+          {uri ? 'image picked' : 'tap to add image'}
+        </Text>
+      </View>
       <TouchableOpacity onPress={open}>
         <Image
           style={styles.avatar}
