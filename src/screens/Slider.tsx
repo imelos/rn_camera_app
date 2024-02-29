@@ -8,12 +8,10 @@ import {
   TouchableOpacity,
   Pressable,
 } from 'react-native';
-import ImagePicker, {Image} from 'react-native-image-crop-picker';
 import {Props} from '@src/navigation/Navigation';
 
-import PhotoPicker from '@src/features/photo-picker/PhotoPicker';
-
-const Slider: React.FC<Props<'slider'>> = ({navigation}) => {
+const Slider: React.FC<Props<'slider'>> = ({route, navigation}) => {
+  const {photos} = route.params;
   //   const [beforeImage, setBefore] = useState<null | Image>(null);
   //   const [afterImage, setAfter] = useState<null | Image>(null);
 
@@ -21,6 +19,7 @@ const Slider: React.FC<Props<'slider'>> = ({navigation}) => {
   return (
     <View style={styles.container}>
       <Text>dfd</Text>
+      <Text>{photos.before.modificationDate}</Text>
     </View>
   );
 };

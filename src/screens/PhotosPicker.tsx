@@ -19,12 +19,26 @@ const PhotosPicker: React.FC<Props<'photosPicker'>> = ({navigation}) => {
   const [afterImage, setAfter] = useState<null | Image>(null);
 
   const displaySliderBtn = beforeImage && afterImage;
+
+  const navigateToSlider = () => {
+    if (displaySliderBtn) {
+      navigation.navigate('slider', {
+        photos: {
+          before: beforeImage,
+          after: afterImage,
+        },
+      });
+    }
+  };
+
   return (
     <View style={styles.container}>
       <PhotoPicker onChange={setBefore} tag={'Before'} />
       <PhotoPicker onChange={setAfter} tag={'After'} />
       {displaySliderBtn && (
-        <Pressable style={{position: 'absolute', right: 70, bottom: 70}}>
+        <Pressable
+          style={{position: 'absolute', right: 70, bottom: 70}}
+          onPress={navigateToSlider}>
           <View
             style={{
               width: 60,
@@ -35,8 +49,6 @@ const PhotosPicker: React.FC<Props<'photosPicker'>> = ({navigation}) => {
               elevation: 5,
               alignItems: 'center',
               justifyContent: 'center',
-              // bottom: 10,
-              // right: 20
             }}>
             <Text style={{fontSize: 25, color: '#fff'}}>{'>'}</Text>
           </View>
