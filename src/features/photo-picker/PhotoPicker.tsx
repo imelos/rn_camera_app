@@ -9,7 +9,10 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import ImagePicker, {Image as ImageType} from 'react-native-image-crop-picker';
+import ImagePicker, {
+  Image as ImageType,
+  Options,
+} from 'react-native-image-crop-picker';
 import Modal from 'react-native-modal';
 import {AVATAR_PLACEHOLDER} from '@src/images';
 import {CameraIcon, ImageIcon} from './icons';
@@ -17,6 +20,13 @@ import {CameraIcon, ImageIcon} from './icons';
 import {formatDate} from '@src/utils/format-date';
 
 import ImageTitle from '@src/components/image-title/ImageTitle';
+
+const cameraOptions: Options = {
+  width: 300,
+  height: 400,
+  cropping: true,
+  mediaType: 'photo',
+};
 
 interface AvatarProps extends ImageProps {
   onChange?: (file: ImageType) => void;
@@ -29,11 +39,7 @@ const PhotoPicker: React.FC<AvatarProps> = props => {
   const close = () => setVisible(false);
   const open = () => setVisible(true);
   const chooseImage = () => {
-    ImagePicker.openPicker({
-      width: 300,
-      height: 400,
-      cropping: true,
-    })
+    ImagePicker.openPicker(cameraOptions)
       .then(image => {
         setImage(image);
         props.onChange?.(image);
@@ -42,11 +48,7 @@ const PhotoPicker: React.FC<AvatarProps> = props => {
   };
 
   const openCamera = () => {
-    ImagePicker.openCamera({
-      width: 300,
-      height: 400,
-      cropping: true,
-    })
+    ImagePicker.openCamera(cameraOptions)
       .then(image => {
         setImage(image);
         props.onChange?.(image);
