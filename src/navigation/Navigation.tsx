@@ -1,6 +1,4 @@
-import {useContext} from 'react';
-import {Text, View} from 'react-native';
-
+import React from 'react';
 import {NavigationContainer, DefaultTheme} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';

@@ -5,29 +5,45 @@ import Slider from '@react-native-community/slider';
 
 import ImageTitle from '@src/components/image-title/ImageTitle';
 
-
 const windowWidth = Dimensions.get('window').width;
 const imageWidth = windowWidth * 0.8;
 
 const SliderComponent: React.FC<SliderParams> = ({photos}) => {
   const [width, setWidth] = useState<number>(0);
 
-  const displayMessage = (value: number) => {
+  const [{title, subTitle}, setTitle] = useState<{
+    title: string;
+    subTitle: string;
+  }>({
+    title: 'After',
+    subTitle: photos.after.modificationDate ?? '',
+  });
+
+  const displayTitle = (value: number) => {
     if (value === 0) {
-      console.log('after');
+      setTitle({
+        title: 'After',
+        subTitle: photos.after.modificationDate ?? '',
+      });
     }
     if (value >= imageWidth) {
-      console.log('before');
+      setTitle({
+        title: 'Before',
+        subTitle: photos.before.modificationDate ?? '',
+      });
     }
+  };
+
+  const hideTitle = () => {
+    setTitle({
+      title: '',
+      subTitle: '',
+    });
   };
 
   return (
     <View style={styles.container}>
-      <ImageTitle
-          // style={{height: '15%'}}
-          title={'ss'}
-          subTitle={'ss'}
-        />
+      <ImageTitle title={title} subTitle={subTitle} />
       <View style={{position: 'relative'}}>
         <Image
           style={{
@@ -58,7 +74,8 @@ const SliderComponent: React.FC<SliderParams> = ({photos}) => {
         minimumTrackTintColor="purple"
         maximumTrackTintColor="#000000"
         onValueChange={setWidth}
-        onSlidingComplete={displayMessage}
+        onSlidingStart={hideTitle}
+        onSlidingComplete={displayTitle}
       />
     </View>
   );

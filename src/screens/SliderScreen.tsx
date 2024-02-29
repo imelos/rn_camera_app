@@ -1,8 +1,5 @@
-import React, {useEffect, useState, useRef} from 'react';
-import {
-  StyleSheet,
-  View,
-} from 'react-native';
+import React from 'react';
+import {StyleSheet, View} from 'react-native';
 import {Props} from '@src/navigation/Navigation';
 
 import Slider from '@src/features/slider/Slider';

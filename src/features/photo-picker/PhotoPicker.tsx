@@ -55,9 +55,9 @@ const PhotoPicker: React.FC<AvatarProps> = props => {
   };
 
   let titleText;
-  if (image?.modificationDate) {
+  if (image) {
     titleText = format(
-      new Date(Number(image.modificationDate)),
+      new Date(Number(image.modificationDate ?? 0)),
       "dd/MM/yy', 'HH:mm aaaaa'm'",
     );
   } else {
