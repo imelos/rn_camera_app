@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
   btn: {
     position: 'absolute',
     left: 20,
+    top: 5,
   },
 });
 
