@@ -16,6 +16,8 @@ import {CameraIcon, ImageIcon} from './icons';
 
 import {format} from 'date-fns';
 
+import ImageTitle from '@src/components/image-title/ImageTitle';
+
 interface AvatarProps extends ImageProps {
   onChange?: (file: ImageType) => void;
   tag: string;
@@ -65,20 +67,15 @@ const PhotoPicker: React.FC<AvatarProps> = props => {
   }
 
   return (
-    <View style={{flex: 1, alignItems: 'center'}}>
-      <TouchableOpacity onPress={open} style={{flex: 1}}>
-        <View
-          style={{
-            height: '15%',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}>
-          <Text style={{fontSize: 16, fontWeight: 'bold'}}>{props.tag}</Text>
-          <Text style={{fontSize: 16}}>{titleText}</Text>
-        </View>
+    <View style={styles.container}>
+      <TouchableOpacity onPress={open} style={styles.opacityContainer}>
+        <ImageTitle
+          style={{height: '15%'}}
+          title={props.tag}
+          subTitle={titleText}
+        />
         <Image
-          style={styles.avatar}
-          {...props}
+          style={styles.image}
           source={image ? {uri: image.path} : AVATAR_PLACEHOLDER}
         />
       </TouchableOpacity>
@@ -87,7 +84,7 @@ const PhotoPicker: React.FC<AvatarProps> = props => {
         onBackButtonPress={close}
         onBackdropPress={close}
         backdropTransitionOutTiming={0}
-        style={{justifyContent: 'flex-end', margin: 0}}>
+        style={styles.modal}>
         <SafeAreaView style={styles.options}>
           <Pressable style={styles.option} onPress={chooseImage}>
             <ImageIcon />
@@ -104,12 +101,22 @@ const PhotoPicker: React.FC<AvatarProps> = props => {
 };
 
 const styles = StyleSheet.create({
-  avatar: {
+  container: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  opacityContainer: {
+    flex: 1,
+  },
+  image: {
     paddingTop: 20,
     height: '75%',
     aspectRatio: '0.75',
   },
-
+  modal: {
+    justifyContent: 'flex-end',
+    margin: 0,
+  },
   options: {
     backgroundColor: 'white',
     flexDirection: 'row',

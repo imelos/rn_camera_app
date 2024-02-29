@@ -53,10 +53,11 @@ export default function Navigation(): JSX.Element {
         screenOptions={{
           headerShown: false,
           headerStyle: {
-            backgroundColor: '#797979',
+            backgroundColor: '#fff',
           },
-          headerTintColor: '#fff',
+          headerTintColor: '#000',
           headerTitleAlign: 'center',
+          headerTitleStyle: {color: 'white'},
         }}>
         <RootStack.Screen
           name="photosPicker"
