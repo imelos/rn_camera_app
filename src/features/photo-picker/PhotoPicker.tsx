@@ -23,7 +23,7 @@ interface AvatarProps extends ImageProps {
 
 const PhotoPicker = (props: AvatarProps) => {
   const [image, setImage] = React.useState<ImageOrVideo | null>(null);
-  const [visible, setVisible] = React.useState(false);
+  const [visible, setVisible] = React.useState<boolean>(false);
   const close = () => setVisible(false);
   const open = () => setVisible(true);
   const chooseImage = () => {
@@ -66,16 +66,17 @@ const PhotoPicker = (props: AvatarProps) => {
 
   return (
     <View style={{flex: 1, alignItems: 'center'}}>
-      <View
-        style={{
-          flex: 1,
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}>
-        <Text style={{fontSize: 16}}>{props.tag}</Text>
-        <Text style={{fontSize: 16}}>{titleText}</Text>
-      </View>
-      <TouchableOpacity onPress={open}>
+      <TouchableOpacity onPress={open} style={{flex: 1}}>
+        <View
+          style={{
+            //   flex: 1,
+            height: '15%',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+          <Text style={{fontSize: 16, fontWeight: 'bold'}}>{props.tag}</Text>
+          <Text style={{fontSize: 16}}>{titleText}</Text>
+        </View>
         <Image
           style={styles.avatar}
           {...props}
@@ -86,6 +87,7 @@ const PhotoPicker = (props: AvatarProps) => {
         isVisible={visible}
         onBackButtonPress={close}
         onBackdropPress={close}
+        backdropTransitionOutTiming={0}
         style={{justifyContent: 'flex-end', margin: 0}}>
         <SafeAreaView style={styles.options}>
           <Pressable style={styles.option} onPress={chooseImage}>
@@ -105,7 +107,7 @@ const PhotoPicker = (props: AvatarProps) => {
 const styles = StyleSheet.create({
   avatar: {
     paddingTop: 20,
-    height: '85%',
+    height: '75%',
     aspectRatio: '0.75',
   },
 
