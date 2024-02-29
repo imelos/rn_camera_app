@@ -6,8 +6,8 @@ import PhotoPicker from '@src/features/photo-picker/PhotoPicker';
 const Login: React.FC = () => {
   return (
     <View style={styles.container}>
-      <PhotoPicker tag={'before'} />
-      <PhotoPicker tag={'after'} />
+      <PhotoPicker tag={'Before'} />
+      <PhotoPicker tag={'After'} />
     </View>
   );
 };
@@ -15,9 +15,6 @@ const Login: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 });
 

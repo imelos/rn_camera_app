@@ -14,6 +14,8 @@ import Modal from 'react-native-modal';
 import {AVATAR_PLACEHOLDER} from '@src/images';
 import {CameraIcon, ImageIcon} from './icons';
 
+import {format} from 'date-fns';
+
 interface AvatarProps extends ImageProps {
   onChange?: (file: ImageOrVideo) => void;
   tag: string;
@@ -52,21 +54,32 @@ const PhotoPicker = (props: AvatarProps) => {
       .finally(close);
   };
 
-  const date = new Date(image.path);
-  const titleText = image ? date.format()
+  let titleText;
+  if (image?.modificationDate) {
+    titleText = format(
+      new Date(Number(image.modificationDate)),
+      "dd/MM/yy', 'HH:mm aaaaa'm'",
+    );
+  } else {
+    titleText = 'Tap to add photo';
+  }
 
   return (
-    <View style={{flex: 1}}>
-      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <Text style={{fontSize: 18}}>
-          {uri ? 'image picked' : 'tap to add image'}
-        </Text>
+    <View style={{flex: 1, alignItems: 'center'}}>
+      <View
+        style={{
+          flex: 1,
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
+        <Text style={{fontSize: 16}}>{props.tag}</Text>
+        <Text style={{fontSize: 16}}>{titleText}</Text>
       </View>
       <TouchableOpacity onPress={open}>
         <Image
           style={styles.avatar}
           {...props}
-          source={uri ? {uri} : AVATAR_PLACEHOLDER}
+          source={image ? {uri: image.path} : AVATAR_PLACEHOLDER}
         />
       </TouchableOpacity>
       <Modal
@@ -94,9 +107,6 @@ const styles = StyleSheet.create({
     paddingTop: 20,
     height: '85%',
     aspectRatio: '0.75',
-    // width: 100,
-    // borderRadius: 100,
-    padding: 20,
   },
 
   options: {
