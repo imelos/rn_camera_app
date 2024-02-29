@@ -27,6 +27,8 @@ import {
 
 import PhotosList from '@src/screens/PhotosList';
 
+import Navigation from '@src/navigation/Navigation';
+
 type SectionProps = PropsWithChildren<{
   title: string;
 }>;
@@ -67,7 +69,7 @@ function App(): React.JSX.Element {
 
   return (
     <SafeAreaView style={backgroundStyle}>
-      <PhotosList />
+      <Navigation />
     </SafeAreaView>
   );
 }
