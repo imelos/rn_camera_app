@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet, StyleProp, ViewStyle} from 'react-native';
-import { COLORS } from '@src/colors';
+import {COLORS} from '@src/colors';
 
 type ImageTitleProps = {
   title: string;
