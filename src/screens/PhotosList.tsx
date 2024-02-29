@@ -1,49 +1,34 @@
 import React, {useEffect, useState, useRef} from 'react';
-import {StyleSheet, Text, View, Linking} from 'react-native';
-import {
-  Camera,
-  useCameraPermission,
-  useCameraDevice,
-} from 'react-native-vision-camera';
+import {StyleSheet, Text, View, Linking, Button} from 'react-native';
+import ImagePicker from 'react-native-image-crop-picker';
+
+// import {
+//   Camera,
+//   useCameraPermission,
+//   useCameraDevice,
+// } from 'react-native-vision-camera';
 
 const Login: React.FC = () => {
-  const {hasPermission, requestPermission} = useCameraPermission();
-  const [showCamera, setShowCamera] = useState(true);
-  const camera = useRef<Camera>(null);
+  const [response, setResponse] = React.useState<any>(null);
 
-  const device = useCameraDevice('back');
-
-  useEffect(() => {
-    async function getPermission() {
-      const permission = await Camera.requestCameraPermission();
-      console.log(`Camera permission status: ${permission}`);
-      if (permission === 'denied') await Linking.openSettings();
-    }
-    getPermission();
+  const onButtonPress = React.useCallback(() => {
+    ImagePicker.openCamera({
+      mediaType: 'photo',
+      width: 300,
+      height: 400,
+      cropping: true,
+    }).then(image => {
+      console.log(image);
+    });
   }, []);
 
-  const capturePhoto = async () => {
-    if (camera.current !== null) {
-      const photo = await camera.current.takePhoto({});
-      console.log(photo);
-      setShowCamera(false);
-      console.log(photo.path);
-    }
-  };
-
-  if (device == null)
-    return (
-      <View style={styles.container}>
-        <Text style={{color: 'black'}}>no camera</Text>
-      </View>
-    );
   return (
     <View style={styles.container}>
-      <Camera
-        style={StyleSheet.absoluteFill}
-        device={device}
-        isActive={showCamera}
-        ref={camera}
+      <Button
+        title="open camers"
+        onPress={() => {
+          onButtonPress();
+        }}
       />
     </View>
   );

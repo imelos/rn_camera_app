@@ -9,8 +9,6 @@ import {RouteProp} from '@react-navigation/core';
 
 import PhotosList from '@src/screens/PhotosList';
 
-
-
 export type RootStackParamList = {
   photosList: undefined;
   slider: undefined;
