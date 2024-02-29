@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import ImagePicker, {ImageOrVideo} from 'react-native-image-crop-picker';
+import ImagePicker, {Image as ImageType} from 'react-native-image-crop-picker';
 import Modal from 'react-native-modal';
 import {AVATAR_PLACEHOLDER} from '@src/images';
 import {CameraIcon, ImageIcon} from './icons';
@@ -17,12 +17,12 @@ import {CameraIcon, ImageIcon} from './icons';
 import {format} from 'date-fns';
 
 interface AvatarProps extends ImageProps {
-  onChange?: (file: ImageOrVideo) => void;
+  onChange?: (file: ImageType) => void;
   tag: string;
 }
 
 const PhotoPicker = (props: AvatarProps) => {
-  const [image, setImage] = React.useState<ImageOrVideo | null>(null);
+  const [image, setImage] = React.useState<ImageType | null>(null);
   const [visible, setVisible] = React.useState<boolean>(false);
   const close = () => setVisible(false);
   const open = () => setVisible(true);

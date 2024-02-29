@@ -1,13 +1,47 @@
 import React, {useEffect, useState, useRef} from 'react';
-import {StyleSheet, Text, View, Linking, Button} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Linking,
+  Button,
+  TouchableOpacity,
+  Pressable,
+} from 'react-native';
+import ImagePicker, {Image} from 'react-native-image-crop-picker';
+
+import {Props} from '@src/navigation/Navigation';
 
 import PhotoPicker from '@src/features/photo-picker/PhotoPicker';
 
-const Login: React.FC = () => {
+const Login: React.FC<Props<'photosList'>> = ({navigation}) => {
+  const [beforeImage, setBefore] = useState<null | Image>(null);
+  const [afterImage, setAfter] = useState<null | Image>(null);
+
+  const displaySliderBtn = beforeImage && afterImage;
   return (
     <View style={styles.container}>
-      <PhotoPicker tag={'Before'} />
-      <PhotoPicker tag={'After'} />
+      <PhotoPicker onChange={setBefore} tag={'Before'} />
+      <PhotoPicker onChange={setAfter} tag={'After'} />
+      {displaySliderBtn && (
+        <Pressable style={{position: 'absolute', right: 70, bottom: 70}}>
+          <View
+            style={{
+              width: 60,
+              height: 60,
+              position: 'absolute',
+              backgroundColor: 'green',
+              borderRadius: 50,
+              elevation: 5,
+              alignItems: 'center',
+              justifyContent: 'center',
+              // bottom: 10,
+              // right: 20
+            }}>
+            <Text style={{fontSize: 25, color: '#fff'}}>{'>'}</Text>
+          </View>
+        </Pressable>
+      )}
     </View>
   );
 };
@@ -15,6 +49,7 @@ const Login: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    position: 'relative',
   },
 });
 
