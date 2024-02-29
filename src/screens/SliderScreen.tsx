@@ -1,12 +1,7 @@
 import React, {useEffect, useState, useRef} from 'react';
 import {
   StyleSheet,
-  Text,
   View,
-  Linking,
-  Button,
-  TouchableOpacity,
-  Pressable,
 } from 'react-native';
 import {Props} from '@src/navigation/Navigation';
 

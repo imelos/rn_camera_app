@@ -3,6 +3,9 @@ import {StyleSheet, Text, View, Image, Dimensions} from 'react-native';
 import {SliderParams} from '@src/navigation/Navigation';
 import Slider from '@react-native-community/slider';
 
+import ImageTitle from '@src/components/image-title/ImageTitle';
+
+
 const windowWidth = Dimensions.get('window').width;
 const imageWidth = windowWidth * 0.8;
 
@@ -20,7 +23,11 @@ const SliderComponent: React.FC<SliderParams> = ({photos}) => {
 
   return (
     <View style={styles.container}>
-      <Text>{photos.after.modificationDate}</Text>
+      <ImageTitle
+          // style={{height: '15%'}}
+          title={'ss'}
+          subTitle={'ss'}
+        />
       <View style={{position: 'relative'}}>
         <Image
           style={{

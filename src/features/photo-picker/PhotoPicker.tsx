@@ -35,8 +35,6 @@ const PhotoPicker: React.FC<AvatarProps> = props => {
       cropping: true,
     })
       .then(image => {
-        console.log(image);
-        console.log(image.path);
         setImage(image);
         props.onChange?.(image);
       })
@@ -69,11 +67,7 @@ const PhotoPicker: React.FC<AvatarProps> = props => {
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={open} style={styles.opacityContainer}>
-        <ImageTitle
-          style={{height: '15%'}}
-          title={props.tag}
-          subTitle={titleText}
-        />
+        <ImageTitle title={props.tag} subTitle={titleText} />
         <Image
           style={styles.image}
           source={image ? {uri: image.path} : AVATAR_PLACEHOLDER}

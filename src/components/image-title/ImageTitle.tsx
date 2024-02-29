@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     justifyContent: 'center',
+    padding: 5,
   },
   title: {
     fontSize: 16,
