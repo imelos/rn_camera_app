@@ -16,7 +16,15 @@ export type BackBtnProps = {
 
 const BackBtn: React.FC<BackBtnProps> = ({onPress, style}) => {
   return (
-    <TouchableOpacity style={style} onPress={onPress}>
+    <TouchableOpacity
+      style={style}
+      onPress={onPress}
+      hitSlop={{
+        bottom: 20,
+        left: 20,
+        right: 20,
+        top: 20,
+      }}>
       <Text style={styles.text}>{'<'}</Text>
     </TouchableOpacity>
   );
