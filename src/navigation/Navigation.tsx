@@ -9,11 +9,11 @@ import {RouteProp} from '@react-navigation/core';
 
 import {Image} from 'react-native-image-crop-picker';
 
-import PhotosList from '@src/screens/PhotosList';
+import PhotosPicker from '@src/screens/PhotosPicker';
 import Slider from '@src/screens/Slider';
 
 export type RootStackParamList = {
-  photosList: undefined;
+  photosPicker: undefined;
   slider: {
     photos: {
       before: Image;
@@ -57,9 +57,9 @@ export default function Navigation(): JSX.Element {
           headerTitleAlign: 'center',
         }}>
         <RootStack.Screen
-          name="photosList"
-          component={PhotosList}
-          options={{title: 'PhotosList'}}
+          name="photosPicker"
+          component={PhotosPicker}
+          options={{title: 'PhotosPicker'}}
         />
         <RootStack.Screen
           name="slider"

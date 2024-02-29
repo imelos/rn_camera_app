@@ -69,7 +69,6 @@ const PhotoPicker = (props: AvatarProps) => {
       <TouchableOpacity onPress={open} style={{flex: 1}}>
         <View
           style={{
-            //   flex: 1,
             height: '15%',
             justifyContent: 'center',
             alignItems: 'center',

@@ -14,7 +14,7 @@ import {Props} from '@src/navigation/Navigation';
 
 import PhotoPicker from '@src/features/photo-picker/PhotoPicker';
 
-const Login: React.FC<Props<'photosList'>> = ({navigation}) => {
+const PhotosPicker: React.FC<Props<'photosPicker'>> = ({navigation}) => {
   const [beforeImage, setBefore] = useState<null | Image>(null);
   const [afterImage, setAfter] = useState<null | Image>(null);
 
@@ -53,4 +53,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Login;
+export default PhotosPicker;
