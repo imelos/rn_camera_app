@@ -5,6 +5,8 @@ import Slider from '@react-native-community/slider';
 
 import ImageTitle from '@src/components/image-title/ImageTitle';
 
+import {formatDate} from '@src/utils/format-date';
+
 const windowWidth = Dimensions.get('window').width;
 const imageWidth = windowWidth * 0.8;
 
@@ -16,20 +18,20 @@ const SliderComponent: React.FC<SliderParams> = ({photos}) => {
     subTitle: string;
   }>({
     title: 'After',
-    subTitle: photos.after.modificationDate ?? '',
+    subTitle: formatDate(Number(photos.after.modificationDate) ?? 0),
   });
 
   const displayTitle = (value: number) => {
     if (value === 0) {
       setTitle({
         title: 'After',
-        subTitle: photos.after.modificationDate ?? '',
+        subTitle: formatDate(Number(photos.after.modificationDate) ?? 0),
       });
     }
     if (value >= imageWidth) {
       setTitle({
         title: 'Before',
-        subTitle: photos.before.modificationDate ?? '',
+        subTitle: formatDate(Number(photos.before.modificationDate) ?? 0),
       });
     }
   };

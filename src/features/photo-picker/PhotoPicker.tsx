@@ -14,7 +14,7 @@ import Modal from 'react-native-modal';
 import {AVATAR_PLACEHOLDER} from '@src/images';
 import {CameraIcon, ImageIcon} from './icons';
 
-import {format} from 'date-fns';
+import {formatDate} from '@src/utils/format-date';
 
 import ImageTitle from '@src/components/image-title/ImageTitle';
 
@@ -56,10 +56,7 @@ const PhotoPicker: React.FC<AvatarProps> = props => {
 
   let titleText;
   if (image) {
-    titleText = format(
-      new Date(Number(image.modificationDate ?? 0)),
-      "dd/MM/yy', 'HH:mm aaaaa'm'",
-    );
+    titleText = formatDate(Number(image.modificationDate ?? 0));
   } else {
     titleText = 'Tap to add photo';
   }
