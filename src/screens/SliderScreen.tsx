@@ -10,16 +10,13 @@ import {
 } from 'react-native';
 import {Props} from '@src/navigation/Navigation';
 
+import Slider from '@src/features/slider/Slider';
+
 const SliderScreen: React.FC<Props<'slider'>> = ({route, navigation}) => {
   const {photos} = route.params;
-  //   const [beforeImage, setBefore] = useState<null | Image>(null);
-  //   const [afterImage, setAfter] = useState<null | Image>(null);
-
-  //   const displaySliderBtn = beforeImage && afterImage;
   return (
     <View style={styles.container}>
-      <Text>dfd</Text>
-      <Text>{photos.before.modificationDate}</Text>
+      <Slider photos={photos} />
     </View>
   );
 };

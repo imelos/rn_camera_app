@@ -12,14 +12,16 @@ import {Image} from 'react-native-image-crop-picker';
 import PhotosPickerScreen from '@src/screens/PhotosPickerScreen';
 import SliderScreen from '@src/screens/SliderScreen';
 
+export type SliderParams = {
+  photos: {
+    before: Image;
+    after: Image;
+  };
+};
+
 export type RootStackParamList = {
   photosPicker: undefined;
-  slider: {
-    photos: {
-      before: Image;
-      after: Image;
-    };
-  };
+  slider: SliderParams;
 };
 
 const RootStack = createStackNavigator<RootStackParamList>();
