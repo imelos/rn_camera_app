@@ -43,7 +43,7 @@ export default function Navigation(): JSX.Element {
     <NavigationContainer theme={navTheme}>
       <RootStack.Navigator
         screenOptions={{
-          // headerShown: false,
+          headerShown: false,
           headerStyle: {
             backgroundColor: '#797979',
           },
