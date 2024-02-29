@@ -71,8 +71,9 @@ const SliderComponent: React.FC<SliderParams> = ({photos}) => {
         style={{width: '87%', height: 40}}
         minimumValue={0}
         maximumValue={imageWidth}
-        minimumTrackTintColor="purple"
+        minimumTrackTintColor="#F7A6D8"
         maximumTrackTintColor="#000000"
+        thumbTintColor="#F7A6D8"
         onValueChange={setWidth}
         onSlidingStart={hideTitle}
         onSlidingComplete={displayTitle}
