@@ -21,7 +21,7 @@ interface AvatarProps extends ImageProps {
   tag: string;
 }
 
-const PhotoPicker = (props: AvatarProps) => {
+const PhotoPicker: React.FC<AvatarProps> = props => {
   const [image, setImage] = React.useState<ImageType | null>(null);
   const [visible, setVisible] = React.useState<boolean>(false);
   const close = () => setVisible(false);
