@@ -1,14 +1,15 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, StyleProp, ViewStyle} from 'react-native';
 
 type ImageTitleProps = {
   title: string;
   subTitle: string;
+  style?: StyleProp<ViewStyle>;
 };
 
-const PhotoPicker: React.FC<ImageTitleProps> = ({title, subTitle}) => {
+const ImageTitle: React.FC<ImageTitleProps> = ({title, subTitle, style}) => {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, style]}>
       <Text style={styles.title}>{title}</Text>
       <Text style={styles.subTitle}>{subTitle}</Text>
     </View>
@@ -29,3 +30,5 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
 });
+
+export default ImageTitle;
