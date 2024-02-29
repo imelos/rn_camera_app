@@ -1,31 +1,25 @@
-import React, {useEffect, useState, useRef} from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  Linking,
-  Button,
-  TouchableOpacity,
-  Pressable,
-} from 'react-native';
-import ImagePicker, {Image} from 'react-native-image-crop-picker';
+import React, {useState} from 'react';
+import {StyleSheet, Text, View} from 'react-native';
+import {Image} from 'react-native-image-crop-picker';
 
 import {Props} from '@src/navigation/Navigation';
-
 import PhotoPicker from '@src/features/photo-picker/PhotoPicker';
+import CircleBtn from '@src/components/buttons/CircleBtn';
+
+export type ImageState = null | Image;
 
 const PhotosPickerScreen: React.FC<Props<'photosPicker'>> = ({navigation}) => {
-  const [beforeImage, setBefore] = useState<null | Image>(null);
-  const [afterImage, setAfter] = useState<null | Image>(null);
+  const [before, setBefore] = useState<ImageState>(null);
+  const [after, setAfter] = useState<ImageState>(null);
 
-  const displaySliderBtn = beforeImage && afterImage;
+  const displaySliderBtn = before && after;
 
   const navigateToSlider = () => {
     if (displaySliderBtn) {
       navigation.navigate('slider', {
         photos: {
-          before: beforeImage,
-          after: afterImage,
+          before,
+          after,
         },
       });
     }
@@ -36,23 +30,9 @@ const PhotosPickerScreen: React.FC<Props<'photosPicker'>> = ({navigation}) => {
       <PhotoPicker onChange={setBefore} tag={'Before'} />
       <PhotoPicker onChange={setAfter} tag={'After'} />
       {displaySliderBtn && (
-        <Pressable
-          style={{position: 'absolute', right: 70, bottom: 70}}
-          onPress={navigateToSlider}>
-          <View
-            style={{
-              width: 60,
-              height: 60,
-              position: 'absolute',
-              backgroundColor: 'green',
-              borderRadius: 50,
-              elevation: 5,
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}>
-            <Text style={{fontSize: 25, color: '#fff'}}>{'>'}</Text>
-          </View>
-        </Pressable>
+        <CircleBtn style={styles.btnStyle} onPress={navigateToSlider}>
+          <Text style={styles.btnTextStyle}>{'>'}</Text>
+        </CircleBtn>
       )}
     </View>
   );
@@ -62,6 +42,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     position: 'relative',
+  },
+  btnStyle: {
+    position: 'absolute',
+    right: 70,
+    bottom: 70,
+  },
+  btnTextStyle: {
+    fontSize: 25,
+    color: '#fff',
   },
 });
 
