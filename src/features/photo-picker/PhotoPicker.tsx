@@ -20,7 +20,7 @@ interface AvatarProps extends ImageProps {
 }
 
 const PhotoPicker = (props: AvatarProps) => {
-  const [uri, setUri] = React.useState<string | null>(null);
+  const [image, setImage] = React.useState<ImageOrVideo | null>(null);
   const [visible, setVisible] = React.useState(false);
   const close = () => setVisible(false);
   const open = () => setVisible(true);
@@ -33,7 +33,7 @@ const PhotoPicker = (props: AvatarProps) => {
       .then(image => {
         console.log(image);
         console.log(image.path);
-        setUri(image.path);
+        setImage(image);
         props.onChange?.(image);
       })
       .finally(close);
@@ -46,11 +46,14 @@ const PhotoPicker = (props: AvatarProps) => {
       cropping: true,
     })
       .then(image => {
-        setUri(image.path);
+        setImage(image);
         props.onChange?.(image);
       })
       .finally(close);
   };
+
+  const date = new Date(image.path);
+  const titleText = image ? date.format()
 
   return (
     <View style={{flex: 1}}>
