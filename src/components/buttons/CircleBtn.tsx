@@ -1,5 +1,11 @@
 import {PropsWithChildren} from 'react';
-import {Pressable, View, StyleProp, ViewStyle, StyleSheet} from 'react-native';
+import {
+  View,
+  StyleProp,
+  ViewStyle,
+  StyleSheet,
+  TouchableHighlight,
+} from 'react-native';
 
 export type CircleBtnProps = {
   onPress: () => void;
@@ -14,9 +20,9 @@ const CircleBtn: React.FC<PropsWithChildren<CircleBtnProps>> = ({
   onPress,
 }) => {
   return (
-    <Pressable style={style} onPress={onPress}>
+    <TouchableHighlight style={style} onPress={onPress}>
       <View style={[styles.btn, btnStyle]}>{children}</View>
-    </Pressable>
+    </TouchableHighlight>
   );
 };
 
@@ -25,7 +31,7 @@ const styles = StyleSheet.create({
     width: 60,
     height: 60,
     position: 'absolute',
-    backgroundColor: 'green',
+    backgroundColor: '#F7A6D8',
     borderRadius: 50,
     elevation: 5,
     alignItems: 'center',
