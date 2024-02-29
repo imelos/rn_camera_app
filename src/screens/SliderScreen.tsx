@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import {Props} from '@src/navigation/Navigation';
 
-const Slider: React.FC<Props<'slider'>> = ({route, navigation}) => {
+const SliderScreen: React.FC<Props<'slider'>> = ({route, navigation}) => {
   const {photos} = route.params;
   //   const [beforeImage, setBefore] = useState<null | Image>(null);
   //   const [afterImage, setAfter] = useState<null | Image>(null);
@@ -31,4 +31,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Slider;
+export default SliderScreen;
