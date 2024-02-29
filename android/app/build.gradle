@@ -74,9 +74,9 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace "com.rn_camera_app1"
+    namespace "com.rn_camera_app"
     defaultConfig {
-        applicationId "com.rn_camera_app1"
+        applicationId "com.rn_camera_app"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
