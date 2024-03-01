@@ -20,20 +20,20 @@ const SliderComponent: React.FC<SliderParams> = ({photos}) => {
     subTitle: string;
   }>({
     title: 'After',
-    subTitle: formatDate(Number(photos.after.modificationDate) ?? 0),
+    subTitle: formatDate(Number(photos.after.modificationDate || 0)),
   });
 
   const displayTitle = (value: number) => {
     if (value === 0) {
       setTitle({
         title: 'After',
-        subTitle: formatDate(Number(photos.after.modificationDate) ?? 0),
+        subTitle: formatDate(Number(photos.after.modificationDate || 0)),
       });
     }
     if (value >= imageWidth) {
       setTitle({
         title: 'Before',
-        subTitle: formatDate(Number(photos.before.modificationDate) ?? 0),
+        subTitle: formatDate(Number(photos.after.modificationDate || 0)),
       });
     }
   };
@@ -49,26 +49,14 @@ const SliderComponent: React.FC<SliderParams> = ({photos}) => {
     <View style={styles.container}>
       <ImageTitle title={title} subTitle={subTitle} />
       <View style={{position: 'relative'}}>
-        <Image
-          style={{
-            width: imageWidth,
-            aspectRatio: '0.75',
-          }}
-          source={{uri: photos.before.path}}
-        />
+        <Image style={styles.image} source={{uri: photos.before.path}} />
         <View
           style={{
             width: width,
             overflow: 'hidden',
             position: 'absolute',
           }}>
-          <Image
-            style={{
-              width: imageWidth,
-              aspectRatio: '0.75',
-            }}
-            source={{uri: photos.after.path}}
-          />
+          <Image style={styles.image} source={{uri: photos.after.path}} />
         </View>
       </View>
       <Slider
@@ -91,6 +79,10 @@ const styles = StyleSheet.create({
     flex: 1,
     position: 'relative',
     alignItems: 'center',
+  },
+  image: {
+    width: imageWidth,
+    aspectRatio: '0.75',
   },
 });
 
