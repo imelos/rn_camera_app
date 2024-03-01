@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {
   Image,
   ImageProps,
@@ -122,4 +122,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default PhotoPicker;
+export default memo(PhotoPicker);

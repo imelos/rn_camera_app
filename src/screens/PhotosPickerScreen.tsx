@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useCallback} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {Image} from 'react-native-image-crop-picker';
 
@@ -14,6 +14,14 @@ const PhotosPickerScreen: React.FC<Props<'photosPicker'>> = ({navigation}) => {
 
   const displaySliderBtn = before && after;
 
+  const setBeforeImage = useCallback((val: ImageState) => {
+    setBefore(val);
+  }, []);
+
+  const setAfterImage = useCallback((val: ImageState) => {
+    setAfter(val);
+  }, []);
+
   const navigateToSlider = () => {
     if (displaySliderBtn) {
       navigation.navigate('slider', {
@@ -27,8 +35,8 @@ const PhotosPickerScreen: React.FC<Props<'photosPicker'>> = ({navigation}) => {
 
   return (
     <View style={styles.container}>
-      <PhotoPicker onChange={setBefore} tag={'Before'} />
-      <PhotoPicker onChange={setAfter} tag={'After'} />
+      <PhotoPicker onChange={setBeforeImage} tag={'Before'} />
+      <PhotoPicker onChange={setAfterImage} tag={'After'} />
       {displaySliderBtn && (
         <CircleBtn style={styles.btnStyle} onPress={navigateToSlider}>
           <Text style={styles.btnTextStyle}>{'>'}</Text>
