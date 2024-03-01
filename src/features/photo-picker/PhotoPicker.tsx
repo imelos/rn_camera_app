@@ -16,10 +16,10 @@ import ImagePicker, {
 import Modal from 'react-native-modal';
 import {AVATAR_PLACEHOLDER} from '@src/images';
 import {CameraIcon, ImageIcon} from './icons';
+import ImageTitle from '@src/components/image-title/ImageTitle';
 
 import {formatDate} from '@src/utils/format-date';
 
-import ImageTitle from '@src/components/image-title/ImageTitle';
 
 const cameraOptions: Options = {
   width: 300,
