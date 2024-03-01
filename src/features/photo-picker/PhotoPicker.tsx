@@ -20,7 +20,6 @@ import ImageTitle from '@src/components/image-title/ImageTitle';
 
 import {formatDate} from '@src/utils/format-date';
 
-
 const cameraOptions: Options = {
   width: 300,
   height: 400,
@@ -58,7 +57,7 @@ const PhotoPicker: React.FC<AvatarProps> = props => {
 
   let titleText;
   if (image) {
-    titleText = formatDate(Number(image.modificationDate ?? 0));
+    titleText = formatDate(Number(image.modificationDate || 0));
   } else {
     titleText = 'Tap to add photo';
   }

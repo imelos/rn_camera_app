@@ -50,23 +50,9 @@ export default function Navigation(): JSX.Element {
       <RootStack.Navigator
         screenOptions={{
           headerShown: false,
-          headerStyle: {
-            backgroundColor: '#fff',
-          },
-          headerTintColor: '#000',
-          headerTitleAlign: 'center',
-          headerTitleStyle: {color: 'white'},
         }}>
-        <RootStack.Screen
-          name="photosPicker"
-          component={PhotosPickerScreen}
-          options={{title: 'PhotosPicker'}}
-        />
-        <RootStack.Screen
-          name="slider"
-          component={SliderScreen}
-          options={{title: 'Slider'}}
-        />
+        <RootStack.Screen name="photosPicker" component={PhotosPickerScreen} />
+        <RootStack.Screen name="slider" component={SliderScreen} />
       </RootStack.Navigator>
     </NavigationContainer>
   );
