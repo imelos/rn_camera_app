@@ -1,11 +1,6 @@
 import {PropsWithChildren} from 'react';
-import {
-  View,
-  StyleProp,
-  ViewStyle,
-  StyleSheet,
-} from 'react-native';
-import { TouchableHighlight } from 'react-native-gesture-handler';
+import {View, StyleProp, ViewStyle, StyleSheet} from 'react-native';
+import {TouchableHighlight} from 'react-native-gesture-handler';
 import {COLORS} from '@src/colors';
 
 export type CircleBtnProps = {
@@ -21,7 +16,7 @@ const CircleBtn: React.FC<PropsWithChildren<CircleBtnProps>> = ({
   onPress,
 }) => {
   return (
-    <TouchableHighlight style={style} onPress={onPress}>
+    <TouchableHighlight underlayColor="none" style={style} onPress={onPress}>
       <View style={[styles.btn, btnStyle]}>{children}</View>
     </TouchableHighlight>
   );
