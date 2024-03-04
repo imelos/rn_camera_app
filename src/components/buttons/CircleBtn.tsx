@@ -31,7 +31,6 @@ const styles = StyleSheet.create({
   btn: {
     width: 60,
     height: 60,
-    position: 'absolute',
     backgroundColor: COLORS.defaultBtn,
     borderRadius: 50,
     elevation: 5,

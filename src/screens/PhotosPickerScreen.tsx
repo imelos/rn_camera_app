@@ -53,8 +53,8 @@ const styles = StyleSheet.create({
   },
   btnStyle: {
     position: 'absolute',
-    right: 70,
-    bottom: 70,
+    right: 20,
+    bottom: 20,
   },
   btnTextStyle: {
     fontSize: 25,
